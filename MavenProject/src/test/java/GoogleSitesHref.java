@@ -10,6 +10,8 @@ import static com.codeborne.selenide.Selectors.byTagName;
 import static com.codeborne.selenide.Selenide.*;
 
 public class GoogleSitesHref {
+    private final static String url = "https://www.google.com/";
+    private final static String search_value = "cats";
     @Test/* Description
         ID. GLWT_1
         Заголовок. Href-ссылки.
@@ -23,8 +25,8 @@ public class GoogleSitesHref {
     */
     public void GLWT_1(){
         Random random = new Random();
-        open("https://www.google.com/");
-        $(byName("q")).setValue("cats").pressEnter();
+        open(url);
+        $(byName("q")).setValue(search_value).pressEnter();
         ElementsCollection links = $$(byTagName("a"));
         int randomNum = ThreadLocalRandom.current().nextInt(0, links.size() - 1);
         Assert.assertTrue(!links.get(randomNum).getAttribute("href").isEmpty());

@@ -11,6 +11,10 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$;
 
 public class DeleteRecordClass {
+    private final static String url = "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList";
+    private final static String username = "Admin";
+    private final static String password = "admin123";
+    private final static String expected_value = "Success";
     @Test/* Description
         ID. CB_1
         Заголовок. Удаление.
@@ -22,9 +26,9 @@ public class DeleteRecordClass {
         Ожидаемый результат. В левой нижней части страницы отобразилось всплывающее сообщение, содержащее заголовок “Success”.
     */
     public void deleteRecordTest() throws InterruptedException {
-        open("https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList");
-        $(By.name("username")).val("Admin");
-        $(By.name("password")).val("admin123").pressEnter();
+        open(url);
+        $(By.name("username")).val(username);
+        $(By.name("password")).val(password).pressEnter();
         ElementsCollection buttons = $$(By.cssSelector(".bi-trash"));
         buttons.get(1).click();
         Thread.sleep(3000);
@@ -33,6 +37,6 @@ public class DeleteRecordClass {
         yesButton.click();
         Thread.sleep(3000);
         SelenideElement succes_notice = $(byCssSelector(".oxd-text--toast-title")).shouldBe(Condition.visible);
-        Assert.assertEquals(succes_notice.text(), "Success");
+        Assert.assertEquals(succes_notice.text(), expected_value);
     }
 }

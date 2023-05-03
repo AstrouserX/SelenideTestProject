@@ -1,4 +1,3 @@
-import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.ElementsCollection;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -7,7 +6,9 @@ import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class GoogleSearchTest extends BaseClass{
+public class GoogleSearchClass extends BaseClass{
+    private final static String url = "https://www.google.ru/search?q=pig";
+    private final static int expected_size = 17;
     @Test/* Description
     ID. GSP_1
         Заголовок. Ссылки на страницы.
@@ -20,8 +21,8 @@ public class GoogleSearchTest extends BaseClass{
         Ожидаемый результат. Количество ссылок – 17.
     */
     public void searchTest(){
-        openUrl("https://www.google.ru/search?q=pig");
-        ElementsCollection elements = $$(byCssSelector(".LC20lb")).shouldHave(CollectionCondition.size(17));
-        Assert.assertEquals(elements.size(), 17);
+        openUrl(url);
+        ElementsCollection elements = $$(byCssSelector(".LC20lb"));
+        Assert.assertEquals(elements.size(), expected_size);
     }
 }
