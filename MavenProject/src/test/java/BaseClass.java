@@ -9,7 +9,7 @@ public class BaseClass {
     public void setUp(){
         Configuration.browser = "chrome";
         Configuration.headless = false;
-        Configuration.browserSize = "1920*1080";
+        Configuration.browserSize = "1920x1080";
     }
     public void openUrl(String site_url){
         open(site_url);
