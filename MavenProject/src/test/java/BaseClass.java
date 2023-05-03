@@ -1,5 +1,6 @@
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.WebDriverRunner;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import static com.codeborne.selenide.Selenide.open;
@@ -13,6 +14,7 @@ public class BaseClass {
     }
     public void openUrl(String site_url){
         open(site_url);
+        WebDriverRunner.getWebDriver().manage().window().maximize();
     }
     @AfterTest
     public void theEnd(){
