@@ -19,7 +19,7 @@ public class HrefAttribute extends BaseClass{
         Ожидаемый результат. У первого элемента коллекции должен быть не пустой href-атрибут.
     */
     public void hrefAttributeTest(){
-        openUrl(url);
+        open(url);
         ElementsCollection site_links = $$(By.tagName("a"));
         site_links.last(10).stream().filter(e -> !e.getText().isEmpty());
         Assert.assertTrue(!site_links.last(1).get(0).getAttribute("href").isEmpty());
